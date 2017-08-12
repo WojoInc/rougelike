@@ -3,5 +3,5 @@ project(rougelike)
 
 set(CMAKE_CXX_STANDARD 11)
 link_libraries(ncurses)
-set(SOURCE_FILES main.cpp game_objects dungeon Graphics.cpp Graphics.h)
+set(SOURCE_FILES main.cpp game_objects dungeon)
 add_executable(rougelike ${SOURCE_FILES})
