@@ -7,6 +7,7 @@
 
 
 #include "../Graphics.h"
+#include "../dungeon/Dungeon.h"
 #include <string>
 
 class GameObject {
@@ -14,12 +15,9 @@ protected:
     unsigned int d_height, d_width;
     unsigned int d_x, d_y;
     char* sprite;
-    char dungeon;
-    WINDOW* graphics;
+    Dungeon *dungeon;
 public:
-    GameObject(){
-        dungeon = ' ';
-    };
+    GameObject(Dungeon *dungeon) : dungeon(dungeon) {};
     void draw();
     void erase();
 };

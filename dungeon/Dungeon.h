@@ -22,7 +22,9 @@ private:
 
 public:
     Cell(unsigned int x, unsigned int y, int hardness)
-            : d_x(x),d_y(y),hardness(hardness),symbol(' '),border(false){}
+            : d_x(x), d_y(y), hardness(hardness), symbol(' ') {
+        border = false;
+    }
 
     void setHardness(int hardness) {
         Cell::hardness = hardness;
@@ -125,9 +127,9 @@ public:
      * @return the character value that represents the tile
      */
     char chCellAt(unsigned int x, unsigned int y) {
-        return cells[x][y].getSymbol();
+        return cells[(d_width * y) + x]->getSymbol();
     }
 };
 
 
-#endif ROUGELIKE_DUNGEON_H
+#endif //ROUGELIKE_DUNGEON_H

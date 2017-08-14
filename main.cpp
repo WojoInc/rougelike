@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Graphics.h"
 #include "game_objects/Player.h"
+#include "dungeon/Dungeon.h"
 
 
 void main_loop(Player *pc){
@@ -116,7 +117,9 @@ int main() {
     noecho();
     keypad(stdscr,FALSE);
     curs_set(0);
-    Player *pc = new Player();
+    getch();
+    Dungeon dungeon(105, 160, 15);
+    Player *pc = new Player(&dungeon);
     int ch = 0;
     pc->move_abs(45, 45);
     main_loop(pc);

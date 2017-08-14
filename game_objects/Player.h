@@ -10,7 +10,7 @@
 
 class Player : public GameObject{
 public:
-    Player(){
+    Player(Dungeon *dungeon) : GameObject(dungeon) {
         sprite = (char*)malloc(sizeof(char));
         *sprite = '@';
         d_height = d_width = 1;

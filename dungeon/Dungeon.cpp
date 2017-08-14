@@ -3,10 +3,11 @@
 //
 
 
+#include <ncurses.h>
 #include "Dungeon.h"
 
 int distance2(int x1, int y1, int x2, int y2) {
-    return (x2 - x1) ^ 2 + (y2 - y1) ^ 2;
+    return ((x2 - x1) ^ 2) + ((y2 - y1) ^ 2);
 }
 
 Dungeon::Dungeon(unsigned int height, unsigned int width, unsigned int rooms)
@@ -17,6 +18,7 @@ Dungeon::Dungeon(unsigned int height, unsigned int width, unsigned int rooms)
     for (unsigned int i = 0; i < d_height; i++) {
         for (unsigned int j = 0; j < d_width; j++) {
             cells[(d_width * i) + j] = new Cell(j, i, rand() % 255);
+            mvaddch(i, j, cells[(d_width * i) + j]->getSymbol());
         }
     }
 
@@ -25,7 +27,7 @@ Dungeon::Dungeon(unsigned int height, unsigned int width, unsigned int rooms)
         Dungeon::rooms[i] = new Room(0, 0, 0, 0);
     }
     fillCells();
-    placeRooms();
+    //placeRooms();
 
 }
 
@@ -52,7 +54,8 @@ void Dungeon::placeRooms() {
         height = rand() % MAX_DIM + MIN_DIM;
 
         //check if proposed room is within dungeon borders
-        if (x < (d_width - 1) && y < (d_height - 1) && (x + width) < (d_width - 1) && (y + height) < (d_height - 1)) {
+        if ((x < (d_width - 1)) && (y < (d_height - 1)) && ((x + width) < (d_width - 1)) &&
+            ((y + height) < (d_height - 1))) {
 
             while (j < n_rooms) {
                 /*if rooms[j] has not been placed, assume successful and break from loop
