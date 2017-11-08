@@ -7,5 +7,7 @@ file(GLOB gameobjsrc RELATIVE "game_objects" "*.cpp")
 file(GLOB gameobjsrc RELATIVE "game_objects" "*.h")
 file(GLOB dungeonsrc RELATIVE "dungeon" "*.cpp")
 
-set(SOURCE_FILES main.cpp ${gameobjsrc} ${dungeonsrc})
+set(TESTNC demo.cc)
+add_executable(testnc ${TESTNC})
+set(SOURCE_FILES main.cpp ${gameobjsrc} ${dungeonsrc} main.h RougeLike.cpp RougeLike.h)
 add_executable(rougelike ${SOURCE_FILES})
