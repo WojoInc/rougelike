@@ -1,10 +1,10 @@
-$HEADERS = main.h RougeLike.h
+$HEADERS = main.h RougeLike.h PC.h
 
 default: full
 
-full: main.cpp RougeLike.cpp ${HEADERS}
-	g++ -c main.cpp RougeLike.cpp
-	g++ main.o RougeLike.o -o ./bin/rlg -lncurses
+full: main.cpp PC.cpp RougeLike.cpp ${HEADERS}
+	g++ -c main.cpp RougeLike.cpp PC.cpp
+	g++ main.o RougeLike.o PC.o -o ./bin/rlg -lncurses -Wall
 
 clean: 
-	 rm main.o RougeLike.o
+	 rm main.o RougeLike.o PC.o

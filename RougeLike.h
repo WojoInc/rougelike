@@ -7,27 +7,20 @@
 
 
 #include "main.h"
+#include "PC.h"
 
 #define PSTARTX 10;
 #define PSTARTY 10;
 
 class RougeLike {
 private:
-    unsigned char p_start_x;
-    unsigned char p_start_y;
-    unsigned char p_x, p_y;
+    PC *_pc;
 public:
-    RougeLike(unsigned char x, unsigned char y) {
-        p_start_x = x;
-        p_start_y = y;
-        p_x = x;
-        p_y = y;
+    RougeLike() {
+        this->_pc = new PC();
     }
 
-    RougeLike() {
-        p_x = p_start_x = PSTARTX;
-        p_y = p_start_y = PSTARTY;
-    }
+    virtual ~RougeLike();
 
     int main_loop();
 

@@ -12,20 +12,28 @@ int RougeLike::main_loop() {
         ch = getch();
         switch (ch) {
             case 'w':
-                mvaddch(this->p_y, this->p_x, ' ');
-                mvaddch(--this->p_y, this->p_x, '@');
+                this->_pc->move(-1, 0);
                 break;
             case 's':
-                mvaddch(this->p_y, this->p_x, ' ');
-                mvaddch(++this->p_y, this->p_x, '@');
+                this->_pc->move(1, 0);
                 break;
             case 'a':
-                mvaddch(this->p_y, this->p_x, ' ');
-                mvaddch(this->p_y, --this->p_x, '@');
+                this->_pc->move(0, -1);
                 break;
             case 'd':
-                mvaddch(this->p_y, this->p_x, ' ');
-                mvaddch(this->p_y, ++this->p_x, '@');
+                this->_pc->move(0, 1);
+                break;
+            case 'q':
+                this->_pc->move(-1, -1);
+                break;
+            case 'e':
+                this->_pc->move(-1, 1);
+                break;
+            case 'z':
+                this->_pc->move(1, -1);
+                break;
+            case 'c':
+                this->_pc->move(1, 1);
                 break;
             case 'Q':
                 res = 0;
@@ -34,4 +42,8 @@ int RougeLike::main_loop() {
                 break;
         }
     }
+}
+
+RougeLike::~RougeLike() {
+    delete (this->_pc);
 }

@@ -19,6 +19,7 @@ int main(int argc, char *argv[]) {
     setup_window();
     RougeLike *rg = new RougeLike;
     rg->main_loop();
+    delete (rg);
     cleanup_window();
 
 }
