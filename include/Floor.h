@@ -5,25 +5,32 @@
 #ifndef ROUGELIKE_FLOOR_H
 #define ROUGELIKE_FLOOR_H
 
+#include "stdef.h"
+#include "Cell.h"
 
 class Floor {
 
 private:
-    unsigned char _width, _height;
-    unsigned char _order;
+    byte_t _width, _height;
+    byte_t _order;
+
+    std::vector<Cell *> *_cells;
+
 
 public:
-    Floor(unsigned char width, unsigned char height) {
+    Floor(byte_t width, byte_t height, byte_t order) {
         this->_width = width;
         this->_height = height;
+        this->_order = order;
     }
 
-    Floor(unsigned char order) {
+    Floor(byte_t order) {
         this->_height = this->_width = 255;
         this->_order = order;
     }
 
     static void generateFloors(std::vector<Floor *> *floors);
+
 
 };
 

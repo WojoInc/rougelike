@@ -3,7 +3,7 @@
 //
 
 #include <vector>
-#include "Floor.h"
+#include "../include/Floor.h"
 
 void Floor::generateFloors(std::vector<Floor *> *floors) {
     for (auto itr = floors->begin(); itr != floors->end(); ++itr) {
