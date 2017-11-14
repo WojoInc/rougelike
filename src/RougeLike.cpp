@@ -2,7 +2,7 @@
 // Created by wojoinc on 11/8/17.
 //
 
-#include "RougeLike.h"
+#include "../include/RougeLike.h"
 
 int RougeLike::main_loop() {
     int ch = 0;

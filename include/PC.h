@@ -6,19 +6,20 @@
 #define ROUGELIKE_PC_H
 
 #include "ncurses.h"
+#include "stdef.h"
 
 #define PSTARTX 10;
 #define PSTARTY 10;
 
 class PC {
 private:
-    unsigned char _start_x;
-    unsigned char _start_y;
-    unsigned char _x, _y;
-    unsigned char _symbol;
+    byte_t _start_x;
+    byte_t _start_y;
+    byte_t _x, _y;
+    byte_t _symbol;
 
 public:
-    PC(unsigned char _start_x, unsigned char _start_y, unsigned char _symbol) {
+    PC(byte_t _start_x, byte_t _start_y, byte_t _symbol) {
         this->_x = this->_start_x = _start_x;
         this->_y = this->_start_y = _start_y;
         this->_symbol = _symbol;

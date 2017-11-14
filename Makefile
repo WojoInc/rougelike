@@ -1,10 +1,31 @@
-$HEADERS = main.h RougeLike.h PC.h Floor.h
+TARGET = rlg
+SRC_DIR = src
+OBJ_DIR = obj
+TARGET_DIR = bin
+SRC = $(wildcard $(SRC_DIR)/*.cpp)
+OBJ = $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+CXX = g++
+CXXFLAGS += -Wall
+LDFLAGS += -lncurses -ggdb
 
-default: full
+.PHONY: all clean
 
-full: main.cpp PC.cpp RougeLike.cpp Floor.cpp ${HEADERS}
-	g++ -c main.cpp RougeLike.cpp PC.cpp Floor.cpp
-	g++ main.o RougeLike.o PC.o Floor.o -o ./bin/rlg -lncurses -Wall
+default: all
+
+all: $(TARGET)
+
+$(TARGET): $(OBJ)
+	@echo "Linking "$(TARGET_DIR)/$(TARGET)":..." 
+	$(CXX) $^ -o $(TARGET_DIR)/$(TARGET) $(LDFLAGS)
+	@echo 
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@echo "\n*****Compiling "$< "to" $@"*****"
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+	@echo
 
 clean: 
-	 rm main.o RougeLike.o PC.o Floor.o
+	@echo "Cleaning up" $(OBJ_DIR) "and" $(TARGET_DIR) "...\n"
+	rm $(OBJ)
+	rm $(TARGET_DIR)/$(TARGET)
+

@@ -1,6 +1,6 @@
 
-#include "main.h"
-#include "RougeLike.h"
+#include "../include/main.h"
+#include "../include/RougeLike.h"
 
 static void setup_window() {
     initscr();
