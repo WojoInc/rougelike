@@ -11,7 +11,7 @@
 #define PSTARTY 10;
 
 class PC {
-
+private:
     unsigned char _start_x;
     unsigned char _start_y;
     unsigned char _x, _y;

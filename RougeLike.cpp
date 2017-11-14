@@ -46,4 +46,12 @@ int RougeLike::main_loop() {
 
 RougeLike::~RougeLike() {
     delete (this->_pc);
+    this->cleanupFloors();
+    delete (this->floors);
+}
+
+void RougeLike::cleanupFloors() {
+    for (auto itr = this->floors->begin(); itr != floors->end(); ++itr) {
+        delete (*itr);
+    }
 }

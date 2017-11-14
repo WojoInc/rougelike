@@ -9,5 +9,5 @@ file(GLOB dungeonsrc RELATIVE "dungeon" "*.cpp")
 
 set(TESTNC demo.cc)
 add_executable(testnc ${TESTNC})
-set(SOURCE_FILES main.cpp ${gameobjsrc} ${dungeonsrc} main.h RougeLike.cpp RougeLike.h PC.cpp PC.h)
+set(SOURCE_FILES main.cpp ${gameobjsrc} ${dungeonsrc} main.h RougeLike.cpp RougeLike.h PC.cpp PC.h Floor.cpp Floor.h)
 add_executable(rougelike ${SOURCE_FILES})
