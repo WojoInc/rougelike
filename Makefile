@@ -5,8 +5,8 @@ TARGET_DIR = bin
 SRC = $(wildcard $(SRC_DIR)/*.cpp)
 OBJ = $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 CXX = g++
-CXXFLAGS += -Wall
-LDFLAGS += -lncurses -ggdb
+CXXFLAGS += -Wall -ggdb
+LDFLAGS += -lncurses 
 
 .PHONY: all clean
 

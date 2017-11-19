@@ -6,6 +6,7 @@
 #define ROUGELIKE_CELL_H
 
 
+#include <stdlib.h>
 #include "stdef.h"
 
 class Cell {
@@ -39,6 +40,11 @@ public:
 
     void set_hardness(byte_t _hardness);
 
+    Cell() {
+        this->_hardness = rand() % 255;
+        this->_attr = NONE;
+        this->_type = CELL_TYPE::ROCK;
+    }
 };
 
 

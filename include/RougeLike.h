@@ -6,7 +6,7 @@
 #define ROUGELIKE_ROUGELIKE_H
 
 
-#include <vector>
+#include "vector"
 #include "main.h"
 #include "PC.h"
 #include "Floor.h"
@@ -25,7 +25,9 @@ public:
         this->_pc = new PC();
         this->floors = new std::vector<Floor *>(255);
         Floor::generateFloors(floors);
+        floors->at(0)->draw();
     }
+
 
     virtual ~RougeLike();
 
