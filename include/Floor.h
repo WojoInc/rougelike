@@ -8,9 +8,10 @@
 #include "stdef.h"
 #include <vector>
 #include "Cell.h"
+#include "Drawable.h"
 
 
-class Floor {
+class Floor : Drawable {
 
 private:
     byte_t _width, _height;
@@ -18,28 +19,29 @@ private:
 
     std::vector<Cell *> *_cells;
 
-    void generateCells();
-
-
 public:
     Floor(byte_t width, byte_t height, byte_t order) {
         this->_width = width;
         this->_height = height;
         this->_order = order;
         this->_cells = new std::vector<Cell *>(this->_height * this->_width);
-        this->generateCells();
+        Cell::generateCells(this->_cells, this->_height, this->_width);
     }
 
     Floor(byte_t order) {
         this->_height = this->_width = 255;
         this->_order = order;
         this->_cells = new std::vector<Cell *>(this->_height * this->_width);
-        this->generateCells();
+        Cell::generateCells(this->_cells, this->_height, this->_width);
     }
 
     static void generateFloors(std::vector<Floor *> *floors);
 
     void draw();
+
+    void testDraw();
+
+    Cell *cellAt(byte_t y, byte_t x);
 
 };
 

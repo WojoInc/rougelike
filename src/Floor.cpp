@@ -2,7 +2,6 @@
 // Created by wojoinc on 11/11/17.
 //
 
-#include <ncurses.h>
 #include "../include/Floor.h"
 
 void Floor::generateFloors(std::vector<Floor *> *floors) {
@@ -11,21 +10,18 @@ void Floor::generateFloors(std::vector<Floor *> *floors) {
     }
 }
 
-void Floor::generateCells() {
-
+void Floor::draw() {
     for (auto itr = this->_cells->begin(); itr != this->_cells->end(); ++itr) {
-        *itr = new Cell;
+        (*itr)->draw();
     }
-
 }
 
-void Floor::draw() {
-    byte_t y = 0, x = 0;
+void Floor::testDraw() {
     for (auto itr = this->_cells->begin(); itr != this->_cells->end(); ++itr) {
-        mvaddch(y, x++, 94);
-        if (x == 255 && y <= 255) {
-            x = 0;
-            ++y;
-        }
+        (*itr)->testDraw();
     }
+}
+
+Cell *Floor::cellAt(byte_t y, byte_t x) {
+    return this->_cells->at(this->_width * y + x);
 }

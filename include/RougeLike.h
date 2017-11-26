@@ -22,10 +22,12 @@ private:
     void cleanupFloors();
 public:
     RougeLike() {
-        this->_pc = new PC();
+
         this->floors = new std::vector<Floor *>(255);
         Floor::generateFloors(floors);
-        floors->at(0)->draw();
+        floors->at(0)->testDraw();
+        this->_pc = new PC(floors->at(0)->cellAt(10, 10), '@');
+        this->_pc->setCurrentFloor(floors->at(0));
     }
 
 
