@@ -4,6 +4,11 @@
 
 #include "RougeLike.h"
 
+RougeLike::RougeLike() {
+    this->_floor = new Floor(100, 100);
+    this->_pc = new PC(_floor);
+}
+
 int RougeLike::main_loop() {
     int ch = 0;
     int res = 1;

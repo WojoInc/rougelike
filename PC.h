@@ -6,32 +6,25 @@
 #define ROUGELIKE_PC_H
 
 #include "ncurses.h"
+#include "Character.h"
 
-#define PSTARTX 10;
-#define PSTARTY 10;
-
-class PC {
-
-    unsigned char _start_x;
-    unsigned char _start_y;
-    unsigned char _x, _y;
-    unsigned char _symbol;
-
+class PC : Character {
 public:
-    PC(unsigned char _start_x, unsigned char _start_y, unsigned char _symbol) {
-        this->_x = this->_start_x = _start_x;
-        this->_y = this->_start_y = _start_y;
+    PC(Coordinate &start, unsigned char _symbol) {
         this->_symbol = _symbol;
+        this->_start = &start;
     }
 
-    PC() {
-        this->_x = this->_start_x = PSTARTX;
-        this->_y = this->_start_y = PSTARTY;
+    PC(Floor *floor) {
+        this->_start = new Coordinate(STARTX, STARTY);
+        this->_loc = this->_start;
         this->_symbol = '@';
+        this->_floor = floor;
     }
 
-    void move(char y, char x);
+    void move(unsigned int y, unsigned int x);
 
+    virtual ~PC();
 };
 
 
